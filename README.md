@@ -178,3 +178,124 @@ dist
 build
 ```
 
+## 🔌 Step 5: Configure VS Code
+
+1. Install these VS Code extensions:
+
+- ESLint
+- Prettier - Code formatter
+
+2. Add these settings to your VS Code `settings.json` (File > Preferences > Settings > Open Settings JSON):
+
+
+```js
+{
+  // ========== Personal Preferences (Non-Shareable) ========== //
+
+
+  // ========== Project Formatting (Shareable) ========== //
+  // Prettier Defaults
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "prettier.requireConfig": true,
+  "prettier.singleQuote": true,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+
+
+   // ESLint Integration
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+
+  // ========== Language-Specific Formatters ========== //
+  // JS/TS (Prettier)
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+
+   // HTML/CSS (VS Code Defaults)
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "vscode.css-language-features"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "vscode.css-language-features"
+  },
+
+
+  // Other Languages
+
+
+ // Emmet
+  "emmet.excludeLanguages": ["markdown"],
+  "emmet.extensionsPath": [""],
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  }
+
+}
+```
+
+## 📜 Step 6: Add Scripts to package.json
+
+Add these scripts to your `package.json`:
+
+
+```js
+"scripts": {
+  "lint": "eslint . --ext .js,.jsx,.ts,.tsx",  // 🚨 Find errors
+  "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix", // 🔧 Auto-fix
+  "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,json}\"" // ✨ Format
+}
+```
+**🔧 How to Use These Scripts**
+
+1. `npm run lint` 🚨
+
+- Checks all `.js`, `.jsx`, `.ts`, `.tsx` files for errors
+- Shows warnings and errors without fixing them
+- Useful for CI/CD pipelines to ensure code quality
+
+2. `npm run lint:fix` 🔧
+
+- Same as lint but automatically fixes fixable issues
+- Corrects simple problems (e.g., missing semicolons, quotes)
+- Some issues may still require manual fixes
+
+3. `npm run format` ✨
+
+- Formats all files in src/ matching: `.js`, `.jsx`, `.ts`, `.tsx`, `.css`, `.scss`, `.json`
+- Overwrites files with formatted versions (non-destructive)
+
+**💡 Note**
+
+- Run `npm run lint` **before commits** to check for issues
+- Use `npm run lint:fix` first to **automatically fix** what's possible
+- Run `npm run format` if you want to **format all files at once**
+
+
+## 🧪 Step 7: Test Your Setup
+
+1. Create a messy test file 🗑️
+2. Save it → should auto-clean 🧹
+3. Run commands manually:
+
+```js
+npm run lint      # 🚨 Check
+npm run lint:fix  # 🔧 Fix
+npm run format    # ✨ Beautify
+```
