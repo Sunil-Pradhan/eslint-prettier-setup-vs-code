@@ -41,7 +41,7 @@ Here's what each installed package does:
 Create/Edit an ESLint config file `eslint.config.js` in your project root:
 
 
-```json
+```js
 import js from '@eslint/js'
 import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
