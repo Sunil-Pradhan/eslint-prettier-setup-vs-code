@@ -149,3 +149,32 @@ export default [
   },
 ];
 ```
+
+## 💅 Step 4: Create Prettier Configuration
+
+Create a `.prettierrc` file in your project root:
+
+
+```js
+{
+  "semi": true,
+  "trailingComma": "es5",
+  "singleQuote": true,
+  "printWidth": 100,
+  "tabWidth": 2,
+  "useTabs": false,
+  "jsxSingleQuote": false,
+  "bracketSpacing": true,
+  "arrowParens": "always",
+  "endOfLine": "auto"
+}
+```
+Optionally, create a `.prettierignore` file:
+
+```bash
+node_modules
+.next
+dist
+build
+```
+
